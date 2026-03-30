@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="COAP | DA'AWATUL-RUSUL - Sharing and Reviving the Truth. Support our Dawah programs via Airtel Money, Mpamba, or bank transfer.">
+    <meta name="description" content="COAP | Da'awatul-Rusul - Sharing and Reviving the Truth. Support our Dawah programs via Airtel Money, Mpamba, or bank transfer.">
     <title>COAP | Da'awatul-Rusul – Sharing & Reviving the Truth</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- PWA manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B3B2F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
         * {
             margin: 0;
@@ -423,6 +428,26 @@
         .copy-btn:hover {
             background: white;
         }
+        .donate-action {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .whatsapp-btn, .sms-btn {
+            background: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .sms-btn {
+            background: #34B7F1;
+        }
         .bank-details {
             margin-top: 2rem;
             background: rgba(255,255,255,0.1);
@@ -469,6 +494,55 @@
             color: var(--primary);
             margin-bottom: 0.5rem;
         }
+        .contact-form {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 40px;
+            border: 1px solid #ddd;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+        .form-group textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .submit-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Facebook Page Plugin */
+        .fb-page-container {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
 
         footer {
             background: var(--primary-dark);
@@ -481,6 +555,15 @@
             font-family: 'Amiri', serif;
             font-size: 1.2rem;
             margin-bottom: 1rem;
+        }
+        .social-icons a {
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin: 0 0.75rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: white;
         }
 
         .toast {
@@ -496,7 +579,7 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive: Hamburger menu */
+        /* Responsive */
         @media (max-width: 992px) {
             .nav-links {
                 display: none;
@@ -539,7 +622,7 @@
 <nav class="navbar">
     <div class="container nav-container">
         <div class="logo-area">
-            <img src="images/20260323_062626.png" alt="COAP Logo" class="logo-img" onerror="this.src='https://placehold.co/200x200/1E6B52/D4AF37?text=COAP'">
+            <img src="images/coap-logo.png" alt="COAP Logo" class="logo-img" onerror="this.src='https://placehold.co/200x200/1E6B52/D4AF37?text=COAP'">
             <div class="logo-text">COAP<br><span>Da'awatul-Rusul</span></div>
         </div>
         <div class="menu-icon" id="menuToggle">
@@ -563,7 +646,7 @@
 <!-- Hero -->
 <section id="home" class="hero">
     <div class="container hero-content">
-        <img src="images/20260323_062626.png" alt="COAP Logo" class="hero-logo" onerror="this.style.display='none'">
+        <img src="images/coap-logo.png" alt="COAP Logo" class="hero-logo" onerror="this.style.display='none'">
         <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
         <h1>COAP | DA'AWATUL-RUSUL</h1>
         <div class="hero-tagline">Sharing and Reviving the Truth</div>
@@ -583,13 +666,13 @@
         <div style="font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--primary); margin: 1rem 0; text-align: center;">"Who is better in speech than one who calls to Allāh, does righteousness, and says, 'Indeed, I am among the Muslims.'" (Qur'an 41:33)</div>
         <div class="letter-signature" style="margin-top: 1.5rem; border-top: 1px solid #eee; padding-top: 1rem;">
             <strong>Sincerely,</strong><br>
-            Abū Zubāir Farooq Ibn Njalale <br>
+            Ibrahim Muhammad<br>
             Chief Executive Officer<br>
             COAP | Da'awatul-Rusul
         </div>
     </div>
 
-    <!-- ACHIEVEMENTS SECTION (New) -->
+    <!-- ACHIEVEMENTS SECTION -->
     <section id="achievements" class="achievements" data-aos="fade-up">
         <div class="section-title">
             <h2>Our Impact & Achievements</h2>
@@ -601,11 +684,11 @@
                 <div class="stat-label">Dawah Programs Completed</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="1483">0</span>+</div>
+                <div class="stat-number"><span class="counter" data-target="8500">0</span>+</div>
                 <div class="stat-label">People Reached</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="18">0</span></div>
+                <div class="stat-number"><span class="counter" data-target="12">0</span></div>
                 <div class="stat-label">Active Volunteers</div>
             </div>
             <div class="stat-item">
@@ -613,7 +696,7 @@
                 <div class="stat-label">Communities Served</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+                <div class="stat-number"><span class="counter" data-target="5">0</span></div>
                 <div class="stat-label">Years of Service</div>
             </div>
         </div>
@@ -624,14 +707,22 @@
     <section id="programs">
         <div class="section-title" data-aos="fade-up"><h2>Our Da'awah Programs</h2><p>Carrying the prophetic legacy through diverse outreach</p></div>
         <div class="programs-grid">
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=600" alt="School"><div class="program-content"><div class="program-icon"><i class="fas fa-school"></i></div><h3>Primary & Secondary Schools</h3><p>Engaging young minds with the message of Islam through workshops and presentations.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&w=600" alt="University"><div class="program-content"><div class="program-icon"><i class="fas fa-university"></i></div><h3>Colleges & Universities</h3><p>Campus lectures, Q&A sessions, and dialogue programs addressing contemporary questions.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/6187556/pexels-photo-6187556.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mega"><div class="program-content"><div class="program-icon"><i class="fas fa-users"></i></div><h3>Mega Mass Programs</h3><p>Large-scale events reaching thousands, featuring lectures and community gatherings.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/6187872/pexels-photo-6187872.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Women"><div class="program-content"><div class="program-icon"><i class="fas fa-female"></i></div><h3>Women's Programs</h3><p>Tailored gatherings addressing sisters' specific needs and spiritual development.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/7070101/pexels-photo-7070101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Men"><div class="program-content"><div class="program-icon"><i class="fas fa-male"></i></div><h3>Men's Programs</h3><p>Brotherhood circles, mentorship initiatives, and spiritual growth programs.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/1036657/pexels-photo-1036657.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Village"><div class="program-content"><div class="program-icon"><i class="fas fa-tree"></i></div><h3>Village Outreach</h3><p>Reaching rural communities with authentic Islamic knowledge and support.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/6646917/pexels-photo-6646917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Door"><div class="program-content"><div class="program-icon"><i class="fas fa-door-open"></i></div><h3>Door-to-Door Invitation</h3><p>Personal engagement inviting neighbors with wisdom and gentleness.</p></div></div>
-            <div class="program-card"><img class="program-img" src="https://images.pexels.com/photos/6266866/pexels-photo-6266866.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Street"><div class="program-content"><div class="program-icon"><i class="fas fa-street-view"></i></div><h3>Street Dawah</h3><p>Public presence in markets, distributing literature and engaging in open conversations.</p></div></div>
+            <!-- Primary & Secondary Schools -->
+            <div class="program-card"><img class="program-img" src="images/school.jpg" alt="School outreach"><div class="program-content"><div class="program-icon"><i class="fas fa-school"></i></div><h3>Primary & Secondary Schools</h3><p>Engaging young minds with the message of Islam through workshops and presentations.</p></div></div>
+            <!-- Colleges & Universities -->
+            <div class="program-card"><img class="program-img" src="images/university.jpg" alt="University lecture"><div class="program-content"><div class="program-icon"><i class="fas fa-university"></i></div><h3>Colleges & Universities</h3><p>Campus lectures, Q&A sessions, and dialogue programs addressing contemporary questions.</p></div></div>
+            <!-- Mega Mass Programs -->
+            <div class="program-card"><img class="program-img" src="images/mega.jpg" alt="Large gathering"><div class="program-content"><div class="program-icon"><i class="fas fa-users"></i></div><h3>Mega Mass Programs</h3><p>Large-scale events reaching thousands, featuring lectures and community gatherings.</p></div></div>
+            <!-- Women's Programs -->
+            <div class="program-card"><img class="program-img" src="images/women.jpg" alt="Women's program"><div class="program-content"><div class="program-icon"><i class="fas fa-female"></i></div><h3>Women's Programs</h3><p>Tailored gatherings addressing sisters' specific needs and spiritual development.</p></div></div>
+            <!-- Men's Programs -->
+            <div class="program-card"><img class="program-img" src="images/men.jpg" alt="Men's circle"><div class="program-content"><div class="program-icon"><i class="fas fa-male"></i></div><h3>Men's Programs</h3><p>Brotherhood circles, mentorship initiatives, and spiritual growth programs.</p></div></div>
+            <!-- Village Outreach -->
+            <div class="program-card"><img class="program-img" src="images/village.jpg" alt="Village dawah"><div class="program-content"><div class="program-icon"><i class="fas fa-tree"></i></div><h3>Village Outreach</h3><p>Reaching rural communities with authentic Islamic knowledge and support.</p></div></div>
+            <!-- Door-to-Door Invitation -->
+            <div class="program-card"><img class="program-img" src="images/door.jpg" alt="Door to door"><div class="program-content"><div class="program-icon"><i class="fas fa-door-open"></i></div><h3>Door-to-Door Invitation</h3><p>Personal engagement inviting neighbors with wisdom and gentleness.</p></div></div>
+            <!-- Street Dawah -->
+            <div class="program-card"><img class="program-img" src="images/street.jpg" alt="Street dawah"><div class="program-content"><div class="program-icon"><i class="fas fa-street-view"></i></div><h3>Street Dawah</h3><p>Public presence in markets, distributing literature and engaging in open conversations.</p></div></div>
         </div>
     </section>
 
@@ -669,6 +760,9 @@
                 <div class="method-number">099 006 8935</div>
                 <p>Name: Ibrahim Muhammad (COAP)</p>
                 <button class="copy-btn" data-copy="0990068935"><i class="far fa-copy"></i> Copy Number</button>
+                <div class="donate-action">
+                    <a href="https://wa.me/265990068935?text=I%20want%20to%20donate%20to%20COAP%20Da'awatul-Rusul%20via%20Airtel%20Money" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Donate via WhatsApp</a>
+                </div>
             </div>
             <!-- Mpamba (TNM) -->
             <div class="method-card">
@@ -677,6 +771,9 @@
                 <div class="method-number">088 133 9726</div>
                 <p>Name: Ibrahim Muhammad (COAP)</p>
                 <button class="copy-btn" data-copy="0881339726"><i class="far fa-copy"></i> Copy Number</button>
+                <div class="donate-action">
+                    <a href="https://wa.me/265881339726?text=I%20want%20to%20donate%20to%20COAP%20Da'awatul-Rusul%20via%20Mpamba" target="_blank" class="whatsapp-btn"><i class="fab fa-whatsapp"></i> Donate via WhatsApp</a>
+                </div>
             </div>
             <!-- Bank Transfer -->
             <div class="method-card">
@@ -703,17 +800,53 @@
         <p class="note" style="margin-top: 1.5rem;">* Donations are used for dawah programs, educational materials, humanitarian aid, and operational transparency. JazakAllāh khair for your support.</p>
     </section>
 
+    <!-- Facebook Page Plugin -->
+    <div class="fb-page-container">
+        <div class="section-title">
+            <h2>Follow Us on Facebook</h2>
+            <p>Stay updated with our latest events and dawah activities</p>
+        </div>
+        <div id="fb-root"></div>
+        <div class="fb-page" 
+             data-href="https://www.facebook.com/Coapdaawtulrusul" 
+             data-tabs="timeline" 
+             data-width="500" 
+             data-height="500" 
+             data-small-header="false" 
+             data-adapt-container-width="true" 
+             data-hide-cover="false" 
+             data-show-facepile="true">
+        </div>
+    </div>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="section-title" data-aos="fade-up"><h2>Connect With Us</h2><p>We'd love to hear from you</p></div>
         <div class="contact-grid">
             <div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Address</h3><p>Namalaka, behind Zomba General Hospital, Zomba, Malawi</p></div>
             <div class="contact-item"><i class="fas fa-phone-alt"></i><h3>Phone</h3><p>+265 881 339 726</p></div>
-            <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p>callingoftheallprophetsmw@gmail.com</p></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p>info@coapdawah.org</p></div>
             <div class="contact-item"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><p>+265 881 339 726</p></div>
         </div>
-        <div style="text-align: center; margin: 2rem 0;">
-            <a href="mailto:info@coapdawah.org" class="btn-primary" style="background: var(--primary); color: white;">Send a Message</a>
+
+        <!-- Contact Form (uses EmailJS – you need to set up your keys) -->
+        <div class="contact-form">
+            <h3 style="text-align: center; margin-bottom: 1.5rem;">Send us a message</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email address" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="4" placeholder="Your message..."></textarea>
+                </div>
+                <div style="text-align: center;">
+                    <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                </div>
+            </form>
+            <div id="formStatus" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;"></div>
         </div>
     </section>
 </div>
@@ -722,17 +855,21 @@
     <div class="container">
         <div class="footer-quote">﴿ ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ ﴾</div>
         <p>Call to the way of your Lord with wisdom and good instruction. (Qur'an 16:125)</p>
-        <div style="margin: 1.5rem 0;">
-            <a href="#" style="color: var(--accent-gold); margin: 0 0.5rem;"><i class="fab fa-facebook"></i>https://www.facebook.com/Coapdaawtulrusul</a>
-            <a href="#" style="color: var(--accent-gold); margin: 0 0.5rem;"><i class="fab fa-twitter"></i></a>
-            <a href="#" style="color: var(--accent-gold); margin: 0 0.5rem;"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color: var(--accent-gold); margin: 0 0.5rem;"><i class="fab fa-youtube"></i></a>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Coapdaawtulrusul" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.youtube.com/@COAP-MW" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-        <p>&copy; 2026 COAP | DA'AWATUL-RUSUL. All rights reserved. Empowering hearts with the prophetic message.</p>
+        <p>&copy; 2025 COAP | Da'awatul-Rusul. All rights reserved. Empowering hearts with the prophetic message.</p>
     </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Facebook SDK -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0" nonce="COAP_FB"></script>
+<!-- EmailJS Library -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
     AOS.init({ duration: 800, once: true });
 
@@ -742,7 +879,6 @@
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
-    // Close menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
             navLinks.classList.remove('active');
@@ -751,7 +887,6 @@
 
     // Counter animation for achievements
     const counters = document.querySelectorAll('.counter');
-    const speed = 200;
     const startCounters = () => {
         counters.forEach(counter => {
             const target = +counter.getAttribute('data-target');
@@ -768,7 +903,6 @@
             updateCount();
         });
     };
-    // Trigger counters when achievements section is in view
     const achievementsSection = document.getElementById('achievements');
     let counted = false;
     const observer = new IntersectionObserver((entries) => {
@@ -824,6 +958,43 @@
             }
         });
     });
+
+    // EmailJS – replace with your own keys after signup
+    (function() {
+        // You MUST sign up at emailjs.com and replace these with your own keys
+        emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+    })();
+
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            formStatus.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            const params = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+            // Replace with your EmailJS service ID and template ID
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', params)
+                .then(() => {
+                    formStatus.innerHTML = '<span style="color: green;">✅ Message sent successfully! We\'ll reply soon inshaAllah.</span>';
+                    contactForm.reset();
+                }, (error) => {
+                    console.error(error);
+                    formStatus.innerHTML = '<span style="color: red;">❌ Failed to send. Please try again later or contact us directly via WhatsApp.</span>';
+                });
+        });
+    }
+
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+            .then(() => console.log('Service Worker registered'))
+            .catch(err => console.log('Service Worker registration failed:', err));
+    }
 </script>
 </body>
 </html>
